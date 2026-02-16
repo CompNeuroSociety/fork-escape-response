@@ -57,6 +57,9 @@ for p2 in param2s:
     y_young = g.params[param1]
     y_old = old_g_gap
     
+
+    # 2026 
+    # added call to np name space to make sure the division is done in double precision, otherwise it can cause overflow when multiplying by the length of the range
     x_young = (np.double(len(ranges[param2])) - 1.) * (x_young - ranges[param2][0]) / (ranges[param2][-1] - ranges[param2][0])
     y_young = (np.double(len(ranges[param1])) - 1.) * (y_young - ranges[param1][0]) / (ranges[param1][-1] - ranges[param1][0])
     y_old = (np.double(len(ranges[param1])) - 1.) * (y_old - ranges[param1][0]) / (ranges[param1][-1] - ranges[param1][0])
@@ -109,5 +112,7 @@ for p2 in param2s:
 
 
     ii += 1
+# 2026
+# Added savefig line to save the figure after running in command line    
 plt.tight_layout()
 plt.savefig('gfs_param_scan_conductances_' + param2 + '.png')
